@@ -1,0 +1,69 @@
+<div style="background: #e9e2e9; padding: 5px" *ngIf="albums">
+  <nz-card class="content">
+    <div class="title">
+      <a>
+        <img [src]="albums.images[0].url" />
+      </a>
+      <ng-container>
+        <span class="name">
+          {{ albums.album_type |uppercase}}<br />
+          <h1>{{ albums.name }}</h1>
+          {{ albums.artists[0].name }}
+          <i nz-icon nzType="right-circle" nzTheme="outline"></i>
+          {{ albums.release_date | date }}--{{ albums.total_tracks }}song
+        </span>
+      </ng-container>
+    </div>
+    <nz-table #basicTable [nzData]='albums.tracks.items' class="table">
+      <thead>
+        <tr>
+          <th class="iconPlayBig">
+            <i 
+              nz-icon
+              nzType="play-circle"
+              nzTheme="outline"
+              class="iconPlay"
+              style="font-size: 50px; color: green"
+              (click)="sendUriTrack(albums.uri)"
+            ></i>
+            <!-- <i nz-icon nzType="heart" nzTheme="outline" class="iconHeart"></i> -->
+          </th>
+          <th></th>
+          <th></th>
+        </tr>
+        <tr style="border-collapse: separate">
+          <th style="width: 10%">#</th>
+          <th style="width: 80%">Title</th>
+          <th style="width: 10%">
+            <i
+              nz-icon
+              nzType="clock-circle"
+              nzTheme="outline"
+              style="font-size: 20px"
+            ></i>
+          </th>
+        </tr>
+      </thead>
+      <tbody *ngIf="albums" >
+        <tr *ngFor="let data of basicTable.data ; index as i">
+          <td>
+            <span class="tdSTT">
+              {{ i + 1 }}
+            </span>
+            <span class="tdIcon">
+              <i
+                nz-icon
+                nzType="play-circle"
+                nzTheme="outline"
+                (click)="sendUriTrack(data.uri)"
+              ></i>
+            </span>
+          </td>
+          <td>{{ data.name }}</td>
+          <td>{{ data.duration_ms | timeCustomPipe }}</td>
+          <td></td>
+        </tr>
+      </tbody>
+    </nz-table>
+  </nz-card>
+</div>

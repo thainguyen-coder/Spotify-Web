@@ -1,0 +1,70 @@
+<div *ngIf="artist">
+  <div class="ui fluid card">
+    <div class="image">
+      <div *ngIf="artist.images.length > 0">
+        <img
+          class="image"
+          src="{{ artist.images[0].url }}"
+          height="300px"
+          width="50%"
+        />
+      </div>
+    </div>
+    <div class="content">
+      <div nz-row class="row">
+        <h4 nz-col class="ui centered block medium header">
+          {{ artist.name }}
+        </h4>
+
+        <div nz-col class="ui center aligned labels">
+          <div class="ui blue label">
+            Followers: {{ artist.followers.total }}
+          </div>
+          <div class="ui green label">Popularity: {{ artist.popularity }}</div>
+        </div>
+        <div
+          nz-col
+          class="ui center aligned labels"
+          *ngIf="artist.genres.length > 0"
+        >
+          <div class="ui label">Genres: {{ linkGenres(artist.genres) }}</div>
+        </div>
+      </div>
+
+      <div class="ui hidden divider"></div>
+    </div>
+  </div>
+  <nz-table *ngIf="topTrack" #basicTable [nzData]="topTrack.tracks">
+    <thead>
+      <tr>
+        <th style="width: 10%">#</th>
+        <th style="width: 80%">Name</th>
+        <th style="width: 10%">
+          <i
+            nz-icon
+            nzType="clock-circle"
+            nzTheme="outline"
+            style="font-size: 20px"
+          ></i>
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let data of basicTable.data; index as i">
+        <td>
+          <span class="tdSTT">{{ i + 1 }}</span>
+          <span class="tdIcon">
+            <i
+              nz-icon
+              nzType="play-circle"
+              nzTheme="outline"
+              (click)="sendUriTrack(data.uri)"
+            ></i>
+          </span>
+        </td>
+        <td>{{ data.name }}</td>
+        <td>{{ data.duration_ms | timeCustomPipe }}</td>
+      </tr>
+    </tbody>
+  </nz-table>
+</div>

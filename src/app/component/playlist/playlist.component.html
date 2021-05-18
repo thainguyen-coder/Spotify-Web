@@ -1,0 +1,98 @@
+<div class="wrapper" *ngIf="playlist">
+  <nz-card class="content" *ngIf='playlist.images.length >0 ;else addItem'>
+    <div class="title"  >
+      <a class="image">
+        <img [src]="playlist.images[0].url" />
+      </a>
+      <ng-container>
+        <span class="name">
+          {{ playlist.type |uppercase}}<br />
+          <h1>{{ playlist.name }}</h1>
+          {{ playlist.owner.display_name }}*
+          {{ playlist.tracks.items.length }}song
+          <!-- <i
+            nz-icon
+            nzType="clock-circle"
+            nzTheme="outline"
+            style="font-size: 25px"
+          ></i> -->
+       
+          
+        </span>
+      </ng-container>
+    </div>
+
+    <nz-table  [nzLoading]='isLoadingPlaylist' #basicTable [nzData]='playlist.tracks.items'>
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>TITLE</th>
+          <th>ALBUM</th>
+          <th>DATE ADDED</th>
+          <th><i nz-icon nzType="clock-circle" nzTheme="outline"></i></th>
+        </tr>
+      </thead>
+      <tbody class="item">
+        <tr *ngFor="let data of basicTable.data; index as i">
+          <td>
+            <span class="tdSTT">
+              {{ i + 1 }}
+            </span>
+            <span class="tdIcon">
+              <i
+                nz-icon
+                nzType="play-circle"
+                nzTheme="outline"
+                
+                (click)="sendUriTrack(data.track.uri)"
+              ></i>
+            </span>
+          </td>
+          <td>
+            <a>
+              <img [src]="data.track.album.images[0].url" />
+            </a>
+            <span style="padding: 10px"> {{ data.track.name }} </span>
+          </td>
+          <td>{{ data.track.album.name }}</td>
+          <td>{{ data.track.album.release_date | date: mediumDate }}</td>
+          <td>{{ data.track.duration_ms | timeCustomPipe }}</td>
+        </tr>
+      </tbody>
+      
+    </nz-table>
+    <ng-container>
+
+      <div *ngIf="(resultSearchSong |async) as results "  class="result">
+       
+        <div nz-row *ngFor="let tracks of results.items" >
+          <div nz-col nzSpan="10">
+           <a>
+            <img [src]='tracks.album.images[0].url' >
+           </a>
+          
+           {{tracks.name}}<br>
+            
+          </div>
+          <div nz-col nzSpan="8" *ngIf='tracks.album.type ==="album"'>{{tracks.album.name}}</div>
+          <div nz-col nzSpan="6">
+          
+            <button  nz-button class="buttonAdd" [nzSize]="size" nzType="primary" (click)='addTrackPlaylist(tracks.uri,tracks.id)' >Add</button>
+          </div>
+        </div>
+      
+        
+      </div>
+      
+
+    </ng-container>
+   
+  </nz-card>
+</div>
+<ng-template #addItem class="create">
+   
+  <app-search-of-create (clickCreate)=' addTrackToPlaylist($event)'></app-search-of-create>
+
+</ng-template>
+
+<nz-spin nzSimple *ngIf='isLoadingPlaylist'></nz-spin>

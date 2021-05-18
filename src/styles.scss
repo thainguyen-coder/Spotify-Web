@@ -1,0 +1,14 @@
+/* You can add global styles to this file, and also import other style files */
+
+  .buttonAdd{
+    margin: 10px;
+    color: white;
+    background: #7ec1ff;
+    border-radius: 5px;
+    font-size: 0.8em;
+      padding: 5px 20px;
+      border: none;
+      &:hover{
+          background: #5d92c4;
+      }
+  }

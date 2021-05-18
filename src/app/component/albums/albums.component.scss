@@ -1,0 +1,93 @@
+img {
+  position: relative;
+  height: 100%;
+  width: 215px;
+  float: left;
+  border: 1px solid black;
+  padding: 5px;
+  bottom: 20px;
+}
+.iconPlayBig{
+  cursor: pointer;
+}
+.name {
+  float: left;
+  padding-left: 100px;
+  font-size: 30px;
+  font-weight: 300;
+  color: rgb(19, 18, 18);
+  h1{
+    color: rgb(15, 14, 14);
+  }
+}
+nz-table thead tr i.iconplay{
+  font-size: 50px;
+}
+
+.iconplay:hover{
+  font-size: 60px;
+}
+.table .iconplay{
+  font-size: 50px;
+}
+.title {
+  background: lightblue;
+}
+.content {
+  flex: auto;
+  min-height: 0;
+  width: 100%;
+   background: linear-gradient(#938ddf, #2e2e2e);
+  //background: linear-gradient(#b404ae, #2e2e2e);
+}
+.table{
+  // flex: auto;
+  // min-height: 0;
+  // width: 100%;
+  // background: linear-gradient(#b404ae, #2e2e2e);
+
+}
+
+nz-table tbody tr span.tdIcon {
+  display: none;
+  font-size: 25px;
+}
+nz-table tbody tr span.tdSTT {
+  font-size: 25px;
+}
+nz-table tbody tr:hover span.tdSTT {
+  display: none;
+}
+nz-table tbody tr:hover span.tdIcon {
+  display: block;
+  cursor: pointer;
+}
+.type {
+  position: absolute;
+  margin-left: 300px;
+  font-weight: 700;
+  font-size: 30px;
+  margin-top: 4px;
+}
+nz-table, thead, tbody, tfoot, th, tr,td {
+  background-color: transparent !important ;
+
+ }
+
+:host ::ng-deep nz-table .ant-table{
+  background-color: transparent  !important ;
+}
+tr:hover{
+  background-color: rgba(10, 10, 10, 0.315) !important;
+  
+}
+nz-table thead,tbody, span{
+  color: white;
+  font-weight: bold;
+  font-size: 15px;
+}
+
+tr th{
+  color: white;
+  font-size: 20px;
+}

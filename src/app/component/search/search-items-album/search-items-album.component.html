@@ -1,0 +1,18 @@
+<ng-container  *ngIf="album">
+  <div class="display"  style="display:inline-block;line-height:3;">
+    <nz-card nzHoverable style="width:240px" [nzCover]="coverTemplate" >
+      <nz-card-meta [nzTitle]="album.name |uppercase" [routerLink]="[]"></nz-card-meta>
+      <nz-card-meta [nzTitle]="album.album.album_type |uppercase"></nz-card-meta> 
+    </nz-card>
+    <ng-template #coverTemplate>
+      <div  class='contentImg' *ngIf="album.album.images.length >0">
+        <span class="tdIcon">
+          <i nz-icon nzType="play-circle" nzTheme="outline" [routerLink] = "['/album/' + album.album.id]" ></i>
+        </span>
+        <img alt="example"  [src]="album.album.images[0].url" />
+        <br>
+      </div>
+     
+    </ng-template>
+  </div>
+</ng-container>

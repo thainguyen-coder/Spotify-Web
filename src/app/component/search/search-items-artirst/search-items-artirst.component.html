@@ -1,0 +1,31 @@
+<ng-container *ngIf="artirst">
+  <div class="display" style="display: inline-block; line-height: 3">
+    <nz-card nzHoverable style="width: 240px" [nzCover]="coverTemplate"  [routerLink]="['/artist/', artirst.id]">
+      <nz-card-meta
+        [nzTitle]="artirst.name | uppercase"
+       
+      ></nz-card-meta>
+      <nz-card-meta [nzTitle]="artirst.type | uppercase"></nz-card-meta>
+    </nz-card>
+    <ng-template #coverTemplate>
+      <div
+        class="contentImg"
+        *ngIf="artirst.images.length > 0; else erorImages"
+      >
+        <span class="tdIcon">
+          <i nz-icon nzType="play-circle" nzTheme="outline"></i>
+        </span>
+        <a> 
+          <img [src]="artirst.images[0].url" alt="" />
+        </a>
+      </div>
+      <ng-template #erorImages>
+        <img class="dog" src="../../../../assets/img/music.jpg" alt="" />
+      </ng-template>
+
+      <!-- <img alt="example" [*ngIf]="artirst.images.length >0"[src]="artirst.images[0].url"  /> -->
+
+      <br />
+    </ng-template>
+  </div>
+</ng-container>

@@ -1,0 +1,63 @@
+img {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    float: left;
+}
+
+.display {
+    display: inline-flex;
+    padding: 10px;
+}
+.text {
+    min-height: 25px;
+}
+.row{
+  display: block;
+}
+.content {
+    display: block;
+    flex-wrap: wrap;
+    align-items :flex-start;
+    color: white;
+    font-size: 20px;
+    h4{
+      color: white;
+    }
+}
+nz-table tbody tr span.tdIcon {
+    display: none;
+    font-size: 25px;
+    cursor: pointer;
+  }
+  nz-table tbody tr span.tdSTT {
+    font-size: 25px;
+  }
+  nz-table tbody tr:hover span.tdSTT {
+    display: none;
+  }
+  nz-table tbody tr:hover span.tdIcon {
+    display: block;
+  }
+  nz-table, thead, tbody, tfoot, th, tr,td {
+    background-color: transparent !important ;
+  
+   }
+  
+  :host ::ng-deep nz-table .ant-table{
+    background-color: transparent ;
+  }
+  tr:hover{
+    background-color: rgba(10, 10, 10, 0.315) !important;
+    
+  }
+  nz-table thead,tbody, span{
+    color: white;
+    font-weight: bold;
+    font-size: 15px;
+  }
+  
+  tr th{
+    color: white;
+    font-size: 20px;
+  }

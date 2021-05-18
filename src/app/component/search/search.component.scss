@@ -1,0 +1,50 @@
+/* You can add global styles to this file, and also import other style files */
+body {
+    //background: url(/assets/public/images/spotify-banner.jpg) center center fixed no-repeat;
+   
+    background-size: cover;
+    height: 100%;
+
+}
+p{
+  color: rgb(241, 237, 237);
+  font-size: 20px;
+  font-weight:bold;;
+}
+.main {
+  color: white;
+  background-color: darkslategrey;
+}
+.inputText{
+  margin-bottom: 10px;
+ height: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+.result{
+  color:black;
+}
+
+.scheme{
+  color: #669CAD;
+}
+
+.scheme-button{
+  background-color: #669CAD !important;
+}
+
+
+.main{
+  text-align: center;
+}
+input{
+  color: black;
+}
+.content{
+  float: left;
+  padding: 15px;
+}
+
+

@@ -1,0 +1,29 @@
+<div class="main" >
+    <h2 style="color: white;">Looking For Music?</h2>
+    <div class="sub header">Enter an artist in the search box below to get all list of all theirs songs and albums</div>
+    <div class="ui form">
+      <div class="inputText">
+        <input type="text" placeholder="Search for Songs..." (keyup)="search($event.target.value)">
+        <!-- <input type="text" placeholder="Search for Songs..." > -->
+       
+      </div>
+    </div>
+  </div>
+  <div class="ui hidden divider"></div>
+<div *ngIf="(results$ |async) as results" class="content">
+  <p>Artirst</p>
+  <div nz-row> 
+    <app-search-items-artirst nz-col nzSpan='6' [nzJustify]='start' *ngFor="let artirst of results.artists.items |singerFilter:'artist'"  [artirst] ="artirst"></app-search-items-artirst>
+  </div>
+  
+  <hr>
+  <p>Songs</p>
+  <div nz-row>
+    <app-search-items-track nz-col nzSpan='6' [nzJustify]='start'  *ngFor="let tracks of results.tracks.items |singerFilter:'single'"  [tracks] ="tracks"></app-search-items-track>
+
+  </div>
+  <p>Album</p>
+  <div  nz-row>
+    <app-search-items-album nz-col nzSpan='6' [nzJustify]='start'  *ngFor="let album of results.tracks.items |singerFilter:'album'" [album] ="album"></app-search-items-album>
+  </div>
+</div>

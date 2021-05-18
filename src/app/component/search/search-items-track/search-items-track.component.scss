@@ -1,0 +1,50 @@
+img {
+    width: 100%;
+}
+.display {
+    display: inline-flex;
+    padding: 10px;
+}
+.text {
+    min-height: 25px;
+}
+.content {
+    display: flex;
+    flex-wrap: wrap;
+    align-items :flex-start;
+}
+.contentImg{
+    position: relative;
+}
+
+span.tdIcon{
+    position:absolute;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    right: 0;
+    margin-left: auto;
+    margin-right: auto;
+    visibility: hidden;
+    opacity: 0;
+    background-color:#484848ab ;
+    font-size: 30px;
+    display: flex;
+    align-items: center;
+    align-self: center;
+    justify-content: center;
+    i{
+        color: #fff;
+    }
+}
+
+.contentImg:hover{
+    span.tdIcon{
+        visibility: visible;
+        opacity: 1;
+    }
+}
+
+
+
+

@@ -1,0 +1,46 @@
+<ng-container *ngIf="dataRecent?.length >0">
+  <h1>Recently played</h1>
+  <div nz-row>
+    <div nz-col nzSpan="6" class="display" *ngFor="let item of dataRecent">
+      <nz-card nzHoverable [nzCover]="coverTemplate">
+        <nz-card-meta nzTitle="{{ item.track.name }}"></nz-card-meta>
+        <nz-card-meta
+          nzTitle=" {{ item.track.artists[0].name }}"
+        ></nz-card-meta>
+      </nz-card>
+      <ng-template #coverTemplate>
+        <i [routerLink]="['/album/' + item.track.album.id]">
+          <img alt="example" src="{{ item.track.album.images[0].url }}" />
+        </i>
+
+        <br />
+      </ng-template>
+
+      <br />
+    </div>
+  </div>
+</ng-container>
+  <ng-container *ngIf="dataListNewReleases">
+    <h1>New Album</h1>
+    <div nz-row>
+      <div
+        nz-col
+        nzSpan="6"
+        class="display"
+        *ngFor="let item of dataListNewReleases.albums.items"
+      >
+        <nz-card nzHoverable [nzCover]="coverTemplate">
+          <nz-card-meta nzTitle="{{ item.name }}"></nz-card-meta>
+          <nz-card-meta nzTitle=" {{ item.type }}"></nz-card-meta>
+        </nz-card>
+        <ng-template #coverTemplate>
+          <a [routerLink]="['/album/' + item.id]">
+            <img alt="example" src="{{ item.images[0].url }}" />
+          </a>
+
+          <br />
+        </ng-template>
+      </div>
+    </div>
+  </ng-container>
+

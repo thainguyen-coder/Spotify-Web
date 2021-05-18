@@ -1,0 +1,25 @@
+img {
+    width: 100%;
+}
+.display {
+    display: inline-flex;
+    padding: 10px;
+}
+.text {
+    min-height: 25px;
+}
+.content {
+    // display: flex;
+    // flex-wrap: wrap;
+    // align-items :flex-start;
+}
+.dog{
+    min-height: 240px;
+}
+[nz-col]{
+    padding: 15px;
+    nz-card{
+        width: 100%;
+        
+    }
+}

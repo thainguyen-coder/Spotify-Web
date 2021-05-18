@@ -1,0 +1,30 @@
+<ng-container *ngIf="tracks">
+  <div class="display">
+    <nz-card nzHoverable style="width: 240px" [nzCover]="coverTemplate">
+      <nz-card-meta
+        [nzTitle]="tracks.name | uppercase"
+        [routerLink]="[]"
+      ></nz-card-meta>
+      <nz-card-meta
+        [nzTitle]="tracks.artists[0].name | uppercase"
+      ></nz-card-meta>
+      <nz-card-meta
+        [nzTitle]="tracks.album.album_type | uppercase"
+      ></nz-card-meta>
+    </nz-card>
+    <ng-template #coverTemplate>
+      <div class="contentImg">
+        <span class="tdIcon">
+          <i nz-icon nzType="play-circle" nzTheme="outline" (click)='sendUriTrack(tracks.uri)'></i>
+        </span>
+        <img
+          class="imgPlay"
+          alt="example"
+          *ngIf="tracks.album.images.length > 0"
+          [src]="tracks.album.images[0].url"
+        />
+        <br />
+      </div>
+    </ng-template>
+  </div>
+</ng-container>

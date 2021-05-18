@@ -1,0 +1,28 @@
+img {
+    width: 100%;
+}
+.display {
+ padding: 10px;
+    width: 100%;
+    
+}
+.text {
+    min-height: 25px;
+}
+.content {
+    display: flex;
+    flex-wrap: wrap;
+    align-items :flex-start;
+}
+h1{
+    font-size: 30px;
+    font-weight:bold;
+    color: white;
+    
+}
+[nz-col]{
+    padding: 10px;
+    nz-card{
+        width: 100%; 
+    }
+}

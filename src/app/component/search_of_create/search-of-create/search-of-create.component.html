@@ -1,0 +1,45 @@
+<nz-card style="width: 100%;" nzTitle="............" >
+  <p style="float: left">Let's find something for your playlist</p>
+  <nz-input-group nzSearch nzSize="large">
+    <input
+      type="text"
+      nz-input
+      placeholder="Search for songs or episodes"
+      (keyup.enter)="search($event.target.value)"
+      [(ngModel)]="valueInput"
+    />
+  </nz-input-group>
+
+  <div *ngIf="results$ | async as results" class="result">
+    <div class="row" nz-row *ngFor="let tracks of results.items">
+      <div nz-col nzSpan="3">
+        <div>
+          <i
+            nz-icon
+            nzType="play-square"
+            nzTheme="outline"
+            style="cursor: pointer;"
+            (click)="sendUriTrack(tracks.uri)"
+          ></i>
+
+          <img [src]="tracks.album.images[0].url" />
+        </div>
+      </div>
+      <div nz-col nzSpan="9">{{ tracks.name }}</div>
+      <div nz-col nzSpan="6" *ngIf="tracks.album.type === 'album'">
+        {{ tracks.album.name }}
+      </div>
+      <div nz-col nzSpan="6">
+        <button
+          class="buttonAdd"
+          nz-button
+          [nzSize]="size"
+          nzType="primary"
+          (click)="addItem(tracks.uri, tracks.id)"
+        >
+          Add
+        </button>
+      </div>
+    </div>
+  </div>
+</nz-card>

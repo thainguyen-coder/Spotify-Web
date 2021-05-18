@@ -1,0 +1,30 @@
+
+<div class="content"  nz-row> 
+  <!-- <p style="position: relative;right: 560px;font-size: 20px;color: black;">Recently played</p> -->
+  <ng-container *ngIf="dataPlaylist" >
+    <div nz-col nzSpan='6' class="display" *ngFor="let album of dataPlaylist.items">
+      <nz-card  nzHoverable  [nzCover]="coverTemplate">
+        <nz-card-meta  nzTitle="{{album.name}}"></nz-card-meta>
+        <nz-card-meta  class="text"  nzTitle=" {{album.description}}"></nz-card-meta>
+      
+      </nz-card>
+      <ng-template #coverTemplate>
+        <div *ngIf="album.images.length >0;else error">
+          <a [routerLink]="['/playlist/', album.id ]" routerLinkActive="router-link-active">
+            <img   [src]="album.images[0].url" />
+          </a>
+        </div>
+        <ng-template #error>
+          <img class="dog" src="../../../../assets/img/music.jpg" alt="">
+        </ng-template>
+      </ng-template>
+    </div>
+   
+  
+  </ng-container>
+</div>
+
+<br>
+
+
+
